@@ -11,6 +11,12 @@ public class BinairePlus extends ExpBinaire {
         return this.getOpGauche().evaluer(env)+this.getOpDroit().evaluer(env);
     }
 
+    @Override
+    ExpAbstraite calculerDerivee(String x) {
+        return new BinairePlus(this.getOpGauche().calculerDerivee(x), this.getOpDroit().calculerDerivee(x));
+    }
+
+
     public BinairePlus(ExpAbstraite e1, ExpAbstraite e2){
         this.setOpGauche(e1);
         this.setOpDroit(e2);

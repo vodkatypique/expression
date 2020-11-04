@@ -19,4 +19,9 @@ public class Constante extends ExpAbstraite {
     boolean parenthesisIsNotNecessy() {
         return true;
     }
+
+    @Override
+    ExpAbstraite calculerDerivee(String x) {
+        return new Constante(0);
+    }
 }

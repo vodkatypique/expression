@@ -14,4 +14,14 @@ public class UnaireSin extends ExpUnaire {
     public UnaireSin(ExpAbstraite e1){
         this.setOperande(e1);
     }
+
+    @Override
+    ExpAbstraite calculerDerivee(String x) {
+        return new BinaireMult(
+                this.getOperande().calculerDerivee(x),
+                new UnaireCos(
+                        this.getOperande().calculerDerivee(x)
+                )
+        );
+    }
 }

@@ -31,5 +31,17 @@ public class Main {
 		env.associer("a", 0);
 		env.associer("b", 1);
 		System.out.println(exp.evaluer(env));
+
+		exp = new BinaireMult(
+				new Variable("x"),
+				new UnaireCos(
+						new BinairePlus(
+								new Variable("x"),
+								new Variable("y")
+						)
+				)
+		);
+		System.out.println(exp.toString());
+		System.out.println(exp.calculerDerivee("x"));
     }
 }

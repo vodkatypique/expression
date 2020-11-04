@@ -27,4 +27,5 @@ public abstract class ExpBinaire extends ExpAbstraite{
                 +operateur
                 +(prioriteDroit ? "(" : "") + this.getOpDroit().toStringInfixe() + (prioriteDroit ? ")" : "");
     }
+
 }

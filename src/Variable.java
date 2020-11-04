@@ -21,4 +21,9 @@ public class Variable extends ExpAbstraite {
     boolean parenthesisIsNotNecessy() {
         return true;
     }
+
+    @Override
+    ExpAbstraite calculerDerivee(String x) {
+        return (this.nom == x ? new Constante(1) : new Constante(0));
+    }
 }

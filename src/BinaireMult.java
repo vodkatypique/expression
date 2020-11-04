@@ -17,4 +17,18 @@ public class BinaireMult extends ExpBinaire {
     double evaluer(Env env) throws InvalidKeyException {
         return this.getOpGauche().evaluer(env)*this.getOpDroit().evaluer(env);
     }
+
+    @Override
+    ExpAbstraite calculerDerivee(String x) {
+        return new BinairePlus(
+                new BinaireMult(
+                        this.getOpGauche().calculerDerivee(x),
+                        this.getOpDroit()
+                ),
+                new BinaireMult(
+                        this.getOpDroit().calculerDerivee(x),
+                        this.getOpGauche()
+                )
+        );
+    }
 }

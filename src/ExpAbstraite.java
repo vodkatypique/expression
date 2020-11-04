@@ -14,4 +14,6 @@ public abstract class ExpAbstraite {
     boolean parenthesisIsNotNecessy(){
         return false;
     }
+
+    abstract ExpAbstraite calculerDerivee(String x);
 }
