@@ -10,4 +10,8 @@ public abstract class ExpAbstraite {
     }
 
     abstract double evaluer(Env env) throws InvalidKeyException;
+
+    boolean parenthesisIsNotNecessy(){
+        return false;
+    }
 }

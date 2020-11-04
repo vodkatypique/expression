@@ -14,4 +14,9 @@ public class Constante extends ExpAbstraite {
     double evaluer(Env env) {
         return this.valeur;
     }
+
+    @Override
+    boolean parenthesisIsNotNecessy() {
+        return true;
+    }
 }

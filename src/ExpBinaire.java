@@ -18,14 +18,11 @@ public abstract class ExpBinaire extends ExpAbstraite{
         this.opGauche = opGauche;
     }
 
-    protected String factoToString(String operateur) {
-        boolean prioriteGauche = false;
-        boolean prioriteDroit = false;
-        if(operateur.equals("*")){
-                    prioriteGauche = !(this.getOpGauche().getClass().getName().equals("Variable")||this.getOpGauche().getClass().getName().equals("Constante"));
-                    prioriteDroit = !(this.getOpDroit().getClass().getName().equals("Variable")||this.getOpDroit().getClass().getName().equals("Constante"));
 
-        }
+    protected String factoToString(String operateur) {
+        boolean prioriteDroit = !this.getOpDroit().parenthesisIsNotNecessy();
+        boolean prioriteGauche = !this.getOpGauche().parenthesisIsNotNecessy();
+
         return (prioriteGauche ? "(" : "") + this.getOpGauche().toStringInfixe() + (prioriteGauche ? ")" : "")
                 +operateur
                 +(prioriteDroit ? "(" : "") + this.getOpDroit().toStringInfixe() + (prioriteDroit ? ")" : "");

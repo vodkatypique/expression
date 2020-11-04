@@ -16,4 +16,9 @@ public class Variable extends ExpAbstraite {
     double evaluer(Env env) throws InvalidKeyException {
         return env.obtenirValeur(this.nom);
     }
+
+    @Override
+    boolean parenthesisIsNotNecessy() {
+        return true;
+    }
 }

@@ -8,4 +8,9 @@ public abstract class ExpUnaire extends ExpAbstraite{
     protected void setOperande(ExpAbstraite operande) {
         this.operande = operande;
     }
+
+    @Override
+    boolean parenthesisIsNotNecessy() {
+        return true;
+    }
 }
