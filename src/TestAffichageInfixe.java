@@ -1,6 +1,6 @@
 import java.security.InvalidKeyException;
 
-public class Main {
+public class TestAffichageInfixe {
 
     public static void main(String[] args) throws InvalidKeyException {
 	ExpAbstraite exp;
@@ -28,8 +28,8 @@ public class Main {
 		);
 		System.out.println(exp.toString());
 		Env env = new Env();
-		env.associer("a", 0);
-		env.associer("b", 1);
+		env.associer("a", new Constante(0));
+		env.associer("b", new Constante(1));
 		System.out.println(exp.evaluer(env));
 
 		exp = new BinaireMult(

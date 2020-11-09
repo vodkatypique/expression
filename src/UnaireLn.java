@@ -1,17 +1,17 @@
 import java.security.InvalidKeyException;
 
-public class UnaireSin extends ExpUnaire {
+public class UnaireLn extends ExpUnaire {
     @Override
     String toStringInfixe() {
-        return "sin("+this.getOperande().toStringInfixe()+")";
+        return "ln("+this.getOperande().toStringInfixe()+")";
     }
 
     @Override
     double evaluer(Env env) throws InvalidKeyException {
-        return Math.sin(this.getOperande().evaluer(env));
+        return Math.log(this.getOperande().evaluer(env));
     }
 
-    public UnaireSin(ExpAbstraite e1){
+    public UnaireLn(ExpAbstraite e1){
         this.setOperande(e1);
     }
 
@@ -19,8 +19,9 @@ public class UnaireSin extends ExpUnaire {
     ExpAbstraite calculerDerivee(String x) {
         return new BinaireMult(
                 this.getOperande().calculerDerivee(x),
-                new UnaireCos(
-                        this.getOperande()
+                new BinairePow(
+                        this.getOperande(),
+                        new Constante(-1)
                 )
         );
     }

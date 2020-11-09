@@ -1,22 +1,20 @@
 import java.security.InvalidKeyException;
-import java.util.Collections;
-import java.util.Dictionary;
 import java.util.HashMap;
 
 public class Env {
-    private HashMap<String, Double> dico;
+    private HashMap<String, Evaluable> dico;
 
     public Env(){
-        this.dico = new HashMap<String, Double>();
+        this.dico = new HashMap<String, Evaluable>();
     }
 
-    public void associer(String nom, double valeur){
+    public void associer(String nom, Evaluable valeur){
         this.dico.putIfAbsent(nom, valeur);
     }
 
     public double obtenirValeur(String nom) throws InvalidKeyException {
         if (this.dico.containsKey(nom)){
-            return this.dico.get(nom);
+            return this.dico.get(nom).evaluer();
 
         }else {
             throw new InvalidKeyException();
@@ -25,8 +23,15 @@ public class Env {
 
     @Override
     public String toString() {
-        return "Env{" +
-                "dico=" + dico +
-                '}';
+        HashMap<String, Double> temp = new HashMap<String, Double>();
+        for (String cle :
+                this.dico.keySet()) {
+            try {
+                temp.put(cle, this.dico.get(cle).evaluer());
+            } catch (InvalidKeyException e) {
+                e.printStackTrace();
+            }
+        }
+        return temp.toString();
     }
 }

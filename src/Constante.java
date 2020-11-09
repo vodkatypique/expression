@@ -1,4 +1,6 @@
-public class Constante extends ExpAbstraite {
+import java.security.InvalidKeyException;
+
+public class Constante extends ExpAbstraite implements Evaluable{
     private double valeur;
 
     public Constante(double valeur){
@@ -23,5 +25,10 @@ public class Constante extends ExpAbstraite {
     @Override
     ExpAbstraite calculerDerivee(String x) {
         return new Constante(0);
+    }
+
+    @Override
+    public double evaluer() throws InvalidKeyException {
+        return this.valeur;
     }
 }
